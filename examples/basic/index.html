@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<title>title</title>
+
+<meta name="description" content="" >
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<div class="seed init">
+	*+title*seed.js*+*
+	*+caption*basic example*+*
+	*+content*Hello world!*+*
+
+	*+content2*What am I doing here?*+*
+	*+content3*Whoah! This is like a <b>magic!</b>*+*
+</div>
+<div class="seed">
+	*+template*
+	<div id="container">
+		<h1>*title*</h1>
+		<h2>*caption*</h2>
+		<p>
+			*content*<br><br>
+			<a href="#" id="update">Click to change and update template</a>
+		</p>
+		<p>
+			<a href="#" id="refresh">Click to add and refresh content</a>
+		</p>
+	</div>
+	*+*
+</div>
+
+<div class="seed">
+	*template*
+</div>
+
+<script type="text/javascript" src="../../seed.js"></script>
+<script>
+	Seed.pageLoaded = function() {
+		document.getElementById("update").onclick = function(e) {
+			e.preventDefault();
+			Seed.seeds.content = Seed.seeds.content2;
+			Seed.update();
+		};
+
+		document.getElementById("refresh").onclick = function(e) {
+			e.preventDefault();
+			this.parentNode.innerHTML += "*content3*";
+			Seed.refresh();
+		};
+	}
+
+	Seed.init();
+</script>
+
+</body>
+</html>
